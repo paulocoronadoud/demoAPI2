@@ -1,8 +1,19 @@
 from fastapi import FastAPI
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Crear un objeto que represente mi aplicación
 
 app = FastAPI()
+
+# Configurar solicitudes cross-origin
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 @app.get("/")
 def saludar():
